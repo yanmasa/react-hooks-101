@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SomeState } from './SomeState';
 
 const App = () => {
   const [count, setCount]=useState(0);
@@ -25,6 +26,8 @@ const App = () => {
   }
   return (
     <div>
+      <SomeState name="椅子" price={100} />
+
       <p>{count}</p>
       <button onClick={handleCountUp}>up</button>
       <button onClick={handleCountDown}>down</button>
