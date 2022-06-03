@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 
 export const SomeState = (props) =>{
-// eslint-disable-next-line
-    const [name, setName] = useState(props.name)
-    const [price, setPrice] = useState(props.price)
-
-    const resetName = ()=>{
-        setName(props.name)
-    }
+    const [state,setState] = useState(props)
+    const {name, price} = state
 
     return (
         <>
             <p>現在の{name}は、{price}円です</p>
-            <button onClick={()=>setPrice(price+1)}>+1</button>
-            <button onClick={()=>setPrice(price-1)}>-1</button>
-            <button onClick={()=>setPrice(props.price)}>reset</button>
-            <input value={name} onChange={e=>setName(e.target.value)} />
-            <button onClick={resetName}>resetName</button>
+            <button onClick={()=>setState({ ...state ,price: price+1})}>+1</button>
+            <button onClick={()=>setState({ ...state ,price: price-1})}>-1</button>
+            <input value={state.name} onChange={e=>setState({...state, name: e.target.value})} />
+            <button onClick={()=> setState(props)}>reset</button>
         </>
     )
 }
